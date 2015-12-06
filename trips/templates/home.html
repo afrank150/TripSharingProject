@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Share a Trip!</title>
+        <!-- CSS & JavaScript
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        -->
+    </head>
+    
+    <body>
+        <h1>Create a Trip</h1>
+        <form method="POST" action="/trips/new/">
+            <label>New Trip Name:</label>
+            <input type="text" name="trip_name_text">
+            <input type="submit" name="Create Trip" value="Submit">
+            {% csrf_token %}
+        </form>
+    </body>
+    
+</html>

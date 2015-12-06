@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load leaflet_tags %}
+
+    <head>
+        <meta charset="utf-8">
+        <title>Share a Trip!</title>
+        <link href="/static/trip.css" rel="stylesheet" media="screen">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Leaflet -->
+        {% leaflet_js plugins="ALL" %}
+        {% leaflet_css plugins="ALL" %}
+        
+    </head>
+    <body>
+        <h1>{{ trip_name }}</h1>
+            <form action="{{ trip.id }}add_point/" method="post" id="savepoint">{% csrf_token %}
+                <input type="hidden" id="pointGeom" value="" />
+            </form>
+            <script>var locationList = {{ location_list|safe }}</script>
+            <script type="text/javascript" src="/static/marker.js"></script>
+
+        {% leaflet_map "TripShare" callback="window.map_init_basic" %}
+    </body>
+</html>
