@@ -32,8 +32,8 @@ $.ajaxSetup({
 function map_init_basic (map, options) {
                     
     // Initialise the FeatureGroup to store editable layers
-    var markerItems = new L.FeatureGroup();
-    map.addLayer(markerItems);
+    /*var markerItems = new L.FeatureGroup();
+    map.addLayer(markerItems);*/
     
     // Return saved marker locatons and add markers to map
     var count = locationList.length;
@@ -85,7 +85,6 @@ function map_init_basic (map, options) {
 
 // AJAX for posting
 function create_post() {
-    console.log("create post is working!") // sanity check
     $.ajax({
         url : document.getElementById('savepoint').action, // the endpoint
         type : "POST", // http method
