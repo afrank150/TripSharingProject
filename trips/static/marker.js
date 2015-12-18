@@ -31,7 +31,7 @@ $.ajaxSetup({
 // Leaflet Map
 function map_init_basic (map, options) {
                     
-    // Initialise the FeatureGroup to store editable layers
+    // Initialise the FeatureGroup to store editable layers (no edit funcrionality yet)
     /*var markerItems = new L.FeatureGroup();
     map.addLayer(markerItems);*/
     
