@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block map %}
+  <!-- css -->
+  <link href="/static/trip.css" rel="stylesheet" media="screen">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="span12">
+        <h2 style="color: white">{{ trip_name }}</h2>
+      </div>
+    </div>
+  </div>
+  <form action="{{ trip.id }}add_point/" method="post" id="savepoint">
+    <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
+  </form>
   <!-- Leaflet -->
   {% load leaflet_tags %}
   <!-- Leaflet Plugins -->
   {% leaflet_js plugins="ALL" %}
   {% leaflet_css plugins="ALL" %}
-  <div class="row">
-    <h1 style="color: white">{{ trip_name }}</h1>
-  </div>
-  <div>
-    <form action="{{ trip.id }}add_point/" method="post" id="savepoint">
-    <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
-    </form>
-  </div>
   <script>var locationList = {{ location_list|safe }}</script>
   <script type="text/javascript" src="/static/marker.js"></script>
   {% leaflet_map "TripShare" callback="window.map_init_basic" %}

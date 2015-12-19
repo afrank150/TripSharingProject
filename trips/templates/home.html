@@ -1,6 +1,9 @@
 {% extends 'base.html' %}        
 
 {% block new_trip_form %}
+	<!-- css -->
+	<link href="/static/home.css" rel="stylesheet">
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -13,7 +16,7 @@
       <div class="item active">
         <img src="static/images/carousel_1.jpg" alt="Image">
         <div class="carousel-caption">
-          <h3>Share Your Adventure!!</h3>
+          <h1>Share Your Adventure!!</h1>
           <p></p>
         </div>      
       </div>
@@ -21,7 +24,7 @@
       <div class="item">
         <img src="static/images/carousel_2.png" alt="Image">
         <div class="carousel-caption">
-          <h3>Find A Trip</h3>
+          <h1>Find A Trip</h1>
           <p></p>
         </div>      
       </div>
@@ -38,15 +41,13 @@
     </a>
   </div>
 
-  <div class="container text-center"><br>
+  <div class="container-fluid text-center"><br>
 
 	  <div class="row">
-	  	<div class="col-sm-5">
+	  	<div class="col-sm-6">
 	  		<h2>Search Trips</h2>
 	  	</div>
-	  	<div class="col-sm-1">
-	  	</div>
-	  	<div class="col-sm-5">
+	  	<div class="col-sm-5 offset1">
 	      <h2>Create a Trip</h2>	
 	  	    <form role="form" method="POST" action="/trips/new/">
 	  	    	<div class="form-group">

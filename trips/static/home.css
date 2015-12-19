@@ -9,7 +9,8 @@ body {
 	color: #ffffff;
 }
 
-.col-sm-5 {
+.col-sm-5,
+.col-sm-6 {
 }
 
 input {

@@ -1,4 +1,16 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #333333;
+}
+
 .leaflet-container {  /* all maps */
     width:  100%;
     height: 600px;
+}
+
+.span12 {
+	padding-top: 40px;
+	text-align: center;
 }
