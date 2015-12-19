@@ -44,8 +44,8 @@ INSTALLED_APPS = (
 )
 
 LEAFLET_CONFIG = {
-    'DEFAULT_CENTER': (20, 0),
-    'DEFAULT_ZOOM': 2,
+    'DEFAULT_CENTER': (30, -10),
+    'DEFAULT_ZOOM': 3,
     'MIN_ZOOM': 2,
     'MAX_ZOOM': 18,
     'TILES': [('Streets', 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=%s' % os.environ.get('MAPBOX_API_TOKEN'), {

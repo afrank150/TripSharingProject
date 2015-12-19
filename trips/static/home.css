@@ -1,7 +1,32 @@
+html,
 body {
-  padding-top: 50px;
+    height: 100%;
+    width: 100%;
+    background-color: #333333;
 }
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+
+.row {
+	color: #ffffff;
+}
+
+.col-sm-5 {
+}
+
+input {
+	color: #000000;
+}
+
+.carousel,
+.item,
+.active {
+    height: 100%;
+    max-height: 450px;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+footer {
+    margin: 50px 0;
 }

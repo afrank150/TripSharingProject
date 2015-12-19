@@ -6,10 +6,14 @@
   <!-- Leaflet Plugins -->
   {% leaflet_js plugins="ALL" %}
   {% leaflet_css plugins="ALL" %}
-  <h1>{{ trip_name }}</h1>
+  <div class="row">
+    <h1 style="color: white">{{ trip_name }}</h1>
+  </div>
+  <div>
     <form action="{{ trip.id }}add_point/" method="post" id="savepoint">
-      <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
+    <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
     </form>
+  </div>
   <script>var locationList = {{ location_list|safe }}</script>
   <script type="text/javascript" src="/static/marker.js"></script>
   {% leaflet_map "TripShare" callback="window.map_init_basic" %}
