@@ -2,7 +2,8 @@
 
 {% block map %}
   <!-- css -->
-  <link href="/static/trip.css" rel="stylesheet" media="screen">
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
   <div class="container-fluid">
     <div class="row">
       <div class="span12">
