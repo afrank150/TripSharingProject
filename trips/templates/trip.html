@@ -4,13 +4,6 @@
   <!-- css -->
   {% load staticfiles %}
   <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
-  <div class="container-fluid">
-    <div class="row">
-      <div class="span12">
-        <h2 style="color: white">{{ trip_name }}</h2>
-      </div>
-    </div>
-  </div>
   <form action="{{ trip.id }}add_point/" method="post" id="savepoint">
     <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
   </form>
