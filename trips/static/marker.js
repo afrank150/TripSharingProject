@@ -32,17 +32,24 @@ $.ajaxSetup({
 function map_init_basic (map, options) {
                     
     // Initialise the FeatureGroup to store editable layers (no edit funcrionality yet)
-    /*var markerItems = new L.FeatureGroup();
-    map.addLayer(markerItems);*/
+    var savedMarkers = new L.featureGroup();
     
     // Return saved marker locatons and add markers to map
     var count = locationList.length;
-    for(var i = 0; i < count; i++) {
-        _location = locationList[i];
-        console.log(_location);
-        L.geoJson(_location).addTo(map);
-    };
-                     
+    if (count > 0) {
+
+        for(var i = 0; i < count; i++) {
+            _location = locationList[i];
+            savedMarkers.addLayer(L.geoJson(_location));
+        };
+        savedMarkers.addTo(map);
+        savedMarkers.bindPopup("Pop-Up");
+
+        // Set map scale in relation to marker bounds
+        var bounds = savedMarkers.getBounds();
+        map.fitBounds(bounds);
+     };
+
     // draw options config
     var options = {
         position: 'topleft',
