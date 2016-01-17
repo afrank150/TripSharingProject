@@ -16,8 +16,6 @@ class TripCreationTest(FunctionalTest):
 
         # User notices the page title and header mention Trip
         self.assertIn('Trip', self.browser.title)
-        header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('Trip', header_text)
 
         # User is invited to enter a new trip name on home page
         inputbox = self.browser.find_element_by_name('trip_name_text')
@@ -28,7 +26,7 @@ class TripCreationTest(FunctionalTest):
         # User notices a create trip button and hits this button
         create_trip_button = self.browser.find_element_by_name('Create Trip')
         create_trip_button.submit()
+
+        # User is taken to the trip create page
+        leaflet_map = self.browser.find_element_by_class_name('leaflet-container')
         
-        # User is taken to a new page titled Colorado Visit
-        header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('Test', header_text)

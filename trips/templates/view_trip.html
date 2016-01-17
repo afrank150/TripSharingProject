@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block map %}
+  <!-- css -->
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
+  <!-- Leaflet -->
+  {% load leaflet_tags %}
+  <!-- Leaflet Plugins -->
+  {% leaflet_js plugins="ALL" %}
+  {% leaflet_css plugins="ALL" %}
+  <script>var locationList = {{ location_list|safe }}</script>
+  <script type="text/javascript" src="/static/view_trip.js"></script>
+  {% leaflet_map "TripShare" callback="window.map_init_basic" %}
+{% endblock %}
