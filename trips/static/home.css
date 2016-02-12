@@ -33,6 +33,19 @@ body {
 .col-sm-6 {
 }
 
+#createdTrips {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+thead {
+	text-align: center;
+}
+
+.btn-sm {
+	color: #181A40;
+}
+
 input {
 	color: #000000;
 }

@@ -10,7 +10,9 @@ from trips.models import Trip, TripLocations
 
 
 def home_page(request):
-    return render(request, 'home.html')
+    latest_trip_list = Trip.objects.order_by('-id')[:10]
+    output = [i.trip_name for i in latest_trip_list]
+    return render(request, 'home.html', {'latest_trip_list': output})
     
 def new_trip(request):
     trip = Trip.objects.create(trip_name=request.POST['trip_name_text'])
