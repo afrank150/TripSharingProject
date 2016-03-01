@@ -11,8 +11,16 @@ from trips.models import Trip, TripLocations
 
 def home_page(request):
     latest_trip_list = Trip.objects.order_by('-id')[:10]
-    output = [i.trip_name for i in latest_trip_list]
-    return render(request, 'home.html', {'latest_trip_list': output})
+
+    keys = []
+    values = []
+    for row in latest_trip_list:
+        keys.append(row.id)
+        values.append(row.trip_name)
+
+    latest_trip_dict = dict(zip(keys, values))
+
+    return render(request, 'home.html', {'latest_trip_dict': latest_trip_dict})
     
 def new_trip(request):
     trip = Trip.objects.create(trip_name=request.POST['trip_name_text'])

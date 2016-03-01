@@ -29,27 +29,34 @@ body {
 	color: #ffffff;
 }
 
+/*
+Page Layout
+*/
+
 .col-sm-5,
 .col-sm-6 {
 }
 
-#createdTrips {
-	margin-left: 20px;
-	margin-right: 20px;
+footer {
+    margin: 50px 0;
 }
 
-thead {
-	text-align: center;
+/*
+Search Trip Section
+*/
+
+#linkToTrip {
+	color: #9d9d9d;
 }
 
-.btn-sm {
-	color: #181A40;
+#linkToTrip:hover {
+	color: #ffffff;
 }
+
+/*
+Create Trip Section
+*/
 
 input {
 	color: #000000;
-}
-
-footer {
-    margin: 50px 0;
 }

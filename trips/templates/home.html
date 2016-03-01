@@ -16,20 +16,18 @@
 	  <div class="row">
 	  	<div class="col-sm-6">
 	  		<h2>Search Trips</h2>
-	  		<table id="createdTrips" class="table">
+	  		<table id="recentTripPosts" class="table">
 					<thead>
 						<tr>
-							<th align="center">Trip Name</th>
-							<th></th>
+							<th class="text-center">Recent Trip Posts</th>
 						</tr>
 					</thead>
 					<tbody>
-						{% for name in latest_trip_list %}
+						{% for k, v in latest_trip_dict.items %}
 						<tr>
-							<td>{{ name }}</td>
 							<td>
 								<nav>
-									<a href="localhost/trips/{{ name.id }}" class="btn btn-primary-outline btn-sm" role="button">View Trip</a>
+									<a href="trips/{{ k }}" id="linkToTrip">{{ v }}</a>
 								</nav>
 							</td>
 						</tr>
