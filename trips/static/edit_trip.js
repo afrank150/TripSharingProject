@@ -36,10 +36,16 @@ function map_init_basic (map, options) {
     
     // Return saved marker locatons and add markers to map
     $(locationList).addLocationsToFeatureGroup(savedMarkers);
+    console.log(locationList);
     savedMarkers.addTo(map);
     savedMarkers.bindPopup("Pop-Up");
-    var bounds = savedMarkers.getBounds();
-    map.fitBounds(bounds);
+
+    var _lyr = savedMarkers.getLayers();
+    if (_lyr.length > 0) {
+        var bounds = savedMarkers.getBounds();
+        map.fitBounds(bounds);
+    };
+
 
     // draw options config
     var options = {

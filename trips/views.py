@@ -1,8 +1,10 @@
 ## Views for Trips App
 
 import json
+import operator
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.core.serializers import serialize
 
 from trips.models import Trip, TripLocations
@@ -11,16 +13,7 @@ from trips.models import Trip, TripLocations
 
 def home_page(request):
     latest_trip_list = Trip.objects.order_by('-id')[:10]
-
-    keys = []
-    values = []
-    for row in latest_trip_list:
-        keys.append(row.id)
-        values.append(row.trip_name)
-
-    latest_trip_dict = dict(zip(keys, values))
-
-    return render(request, 'home.html', {'latest_trip_dict': latest_trip_dict})
+    return render(request, 'home.html', {'latest_trip_list': latest_trip_list})
     
 def new_trip(request):
     trip = Trip.objects.create(trip_name=request.POST['trip_name_text'])

@@ -12,3 +12,16 @@
         }
     });
 })(jQuery);
+
+(function($) {
+    $.fn.extend({
+        zoomToLocations: function() {
+            var _lyrs = this.getLayers();
+            var count = _lyrs.length;
+            if (count > 0) {
+                var bounds = this.getBounds();
+                map.fitBounds(bounds);
+            };
+        }
+    });
+})(jQuery);
