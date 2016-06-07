@@ -4,7 +4,7 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.core.serializers import serialize
+from django.core import serializers
 
 from trips.models import Trip, TripLocations
 
@@ -22,15 +22,10 @@ def edit_trip(request, trip_id):
     this_trip = Trip.objects.get(id=trip_id)
     this_trip_name = this_trip.trip_name
     this_trip_locations = TripLocations.objects.filter(trip=this_trip)
-    
-    location_list = []
-    for location in this_trip_locations:
-        geom = location.geom
-        geojson_object = json.loads(geom.geojson)
-        location_list.append(geojson_object)
+    this_trip_data = serializers.serialize("geojson", this_trip_locations)
 
     return render(request, 'edit_trip.html', {'trip_name': this_trip_name, 
-        'location_list': location_list}
+        'trip_data': this_trip_data}
     )
     
 def add_point(request, trip_id):
@@ -53,13 +48,8 @@ def view_trip(request, trip_id):
     this_trip = Trip.objects.get(id=trip_id)
     this_trip_name = this_trip.trip_name
     this_trip_locations = TripLocations.objects.filter(trip=this_trip)
-    
-    location_list = []
-    for location in this_trip_locations:
-        geom = location.geom
-        geojson_object = json.loads(geom.geojson)
-        location_list.append(geojson_object)
+    this_trip_data = serializers.serialize("geojson", this_trip_locations)
 
     return render(request, 'view_trip.html', {'trip_name': this_trip_name, 
-        'location_list': location_list}
+        'trip_data': this_trip_data}
     )

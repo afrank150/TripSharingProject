@@ -4,20 +4,7 @@
   <!-- css -->
   {% load staticfiles %}
   <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
-  <!-- Core CSS file -->
-  <link rel="stylesheet" href="path/to/photoswipe.css"> 
 
-  <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
-     In the folder of skin CSS file there are also:
-     - .png and .svg icons sprite, 
-     - preloader.gif (for browsers that do not support CSS animations) -->
-  <link rel="stylesheet" href="path/to/default-skin/default-skin.css"> 
-
-  <!-- Core JS file -->
-  <script src="path/to/photoswipe.min.js"></script> 
-
-  <!-- UI JS file -->
-  <script src="path/to/photoswipe-ui-default.min.js"></script> 
   <form action="{{ trip.id }}add_point/" method="post" id="savepoint">
     <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
   </form>
@@ -26,7 +13,8 @@
   <!-- Leaflet Plugins -->
   {% leaflet_js plugins="ALL" %}
   {% leaflet_css plugins="ALL" %}
-  <script>var locationList = {{ location_list|safe }}</script>
+  <!--<script>var locationList = {{ location_list|safe }}</script>-->
+  <script>var tripData = {{ trip_data|safe }}</script>
   <script type="text/javascript" src="/static/plugins.js"></script>
   <script type="text/javascript" src="/static/edit_trip.js"></script>
   {% leaflet_map "TripShare" callback="window.map_init_basic" %}

@@ -30,18 +30,18 @@ $.ajaxSetup({
 
 // Leaflet Map
 function map_init_basic (map, options) {
-                    
+
     // Initialise the FeatureGroup to store editable layers (no edit funcrionality yet)
     var savedMarkers = new L.featureGroup();
-    
-    // Return saved marker locatons and add markers to map
-    $(locationList).addLocationsToFeatureGroup(savedMarkers);
-    console.log(locationList);
-    savedMarkers.addTo(map);
-    savedMarkers.bindPopup("Pop-Up");
 
-    var _lyr = savedMarkers.getLayers();
-    if (_lyr.length > 0) {
+    var features = tripData.features;
+    var count = features.length;
+
+    if (count > 0) {
+    
+        // Return saved marker locations and add markers to map
+        savedMarkers.addLayer(L.geoJson(tripData))
+        savedMarkers.addTo(map);
         var bounds = savedMarkers.getBounds();
         map.fitBounds(bounds);
     };
@@ -71,7 +71,7 @@ function map_init_basic (map, options) {
         // Do marker specific actions
             var lat = layer.getLatLng().lat;
             var lng = layer.getLatLng().lng;
-            var pointCords = "POINT(" + lng + " " + lat + ")";
+            var pointCords = '{"type": "Point", "coordinates": ['+lng+', '+lat+']}';
             document.getElementById('pointGeom').value = pointCords;
             layer.bindPopup("Pop-Up");
             
