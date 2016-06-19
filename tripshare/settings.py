@@ -15,10 +15,49 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# The region to connect to when storing files.
+AWS_REGION = os.environ.get('AWS_REGION')
+
+# The AWS access key used to access the storage buckets.
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+
+# The AWS secret access key used to access the storage buckets.
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+# The S3 bucket used to store uploaded files.
+AWS_S3_BUCKET_NAME = "tripsharephotos"
+
+# The S3 calling format to use to connect to the bucket.
+AWS_S3_CALLING_FORMAT = "boto.s3.connection.OrdinaryCallingFormat"
+
+# A prefix to add to the start of all uploaded files.
+# AWS_S3_KEY_PREFIX = ""
+
+# Whether to enable querystring authentication for uploaded files.
+AWS_S3_BUCKET_AUTH = False
+
+# The expire time used to access uploaded files.
+# AWS_S3_MAX_AGE_SECONDS = 60*60*24*365
+
+# A custom URL prefix to use for public-facing URLs for uploaded files.
+# AWS_S3_PUBLIC_URL = ""
+
+# Whether to set the storage class of uploaded files to REDUCED_REDUNDANCY.
+# AWS_S3_REDUCED_REDUNDANCY = False
+
+# A dictionary of additional metadata to set on the uploaded files.
+# If the value is a callable, it will be called with the path of the file on S3.
+# AWS_S3_METADATA = {}
+
+# The expire time used to access static files.
+# AWS_S3_MAX_AGE_SECONDS_STATIC = 60*60*24*365  # 1 year.
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
+DEFAULT_FILE_STORAGE = "django_s3_storage.storage.S3Storage"
+MEDIA_URL = 'https://%s.s3-%s.amazonaws.com/' % (AWS_S3_BUCKET_NAME, AWS_REGION)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -39,6 +78,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'django_s3_storage', # https://github.com/etianen/django-s3-storage
     'trips',
     'leaflet', # https://github.com/makinacorpus/django-leaflet
 )
@@ -54,6 +94,8 @@ LEAFLET_CONFIG = {
         'accessToken': os.environ.get('MAPBOX_API_TOKEN'), 
     })],
 }
+
+
 
 
 

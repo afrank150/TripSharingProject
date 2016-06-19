@@ -40,10 +40,21 @@ function map_init_basic (map, options) {
     if (count > 0) {
     
         // Return saved marker locations and add markers to map
-        savedMarkers.addLayer(L.geoJson(tripData))
+        console.log(L.geoJson(tripData));
+        savedMarkers.addLayer(L.geoJson(tripData));
         savedMarkers.addTo(map);
         var bounds = savedMarkers.getBounds();
         map.fitBounds(bounds);
+
+        savedMarkers.on('click', function (e) {
+            var marker = e.layer;
+            var markerId = marker.toGeoJSON();
+            console.log(markerId);
+        });
+
+        savedMarkers.on('click', function(event){
+            openModal();
+        });
     };
 
 
@@ -73,7 +84,6 @@ function map_init_basic (map, options) {
             var lng = layer.getLatLng().lng;
             var pointCords = '{"type": "Point", "coordinates": ['+lng+', '+lat+']}';
             document.getElementById('pointGeom').value = pointCords;
-            layer.bindPopup("Pop-Up");
             
         }
         
@@ -84,6 +94,9 @@ function map_init_basic (map, options) {
         
         // Add marker to map
         map.addLayer(layer);
+        layer.on('click', function(event){
+            openModal();
+        });
     });
 }
 
@@ -101,3 +114,12 @@ function create_post() {
         },
     });
 };
+
+// Modal for creating photo post
+function openModal() {
+    $('#pointDataModal').modal('show')
+};
+
+
+
+

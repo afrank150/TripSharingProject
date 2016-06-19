@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.core import serializers
 
 from trips.models import Trip, TripLocations
+from .forms import LocationDataForm
 
 
 
@@ -43,6 +44,11 @@ def add_point(request, trip_id):
             json.dumps(response_data),
             content_type="application/json"
         )
+
+def add_point_data(request):
+    if request.method == 'POST':
+        pass
+
 
 def view_trip(request, trip_id):
     this_trip = Trip.objects.get(id=trip_id)

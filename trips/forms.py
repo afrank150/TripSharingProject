@@ -1,13 +1,10 @@
 from django.forms import ModelForm
-from trips.models import Trip, TripLocations
+from trips.models import LocationData
 
+# Good tutrial for AJAX for submissions
+# https://realpython.com/blog/python/django-and-ajax-form-submissions/
 
-class TripPointLocation(ModelForm):
-    class Meta:
-        model = TripLocations
-        fields = ['geom']
-        widgets = {
-            'geom': forms.HiddenInput(
-                attrs={'id': 'pointGeom'}
-            ),
-        }
+class LocationDataForm(ModelForm):
+	class Meta:
+		model = LocationData
+		fields = ['photo', 'photo_caption', 'location']
