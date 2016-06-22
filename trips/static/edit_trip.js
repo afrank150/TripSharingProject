@@ -76,44 +76,62 @@ function map_init_basic (map, options) {
     map.on('draw:created', function (e) {
         var type = e.layerType,
         layer = e.layer;
-        
 
         if (type === 'marker') {
-        // Do marker specific actions
+        // Create DOM element to POST GeoJSON via AJAX
             var lat = layer.getLatLng().lat;
             var lng = layer.getLatLng().lng;
-            var pointCords = '{"type": "Point", "coordinates": ['+lng+', '+lat+']}';
-            document.getElementById('pointGeom').value = pointCords;
-            
+            pointCords = '{"type": "Point", "coordinates": ['+lng+', '+lat+']}';
+            document.getElementById('pointGeom').value = pointCords;        
         }
-        
-        // Create event for Marker being added
-        layer.on('add', function(event){
+
+        // Create feature group and GeoJSON Representation for new layers
+        var newSavedMarkers = new L.featureGroup();
+        var markerGeoJson = layer.toGeoJSON();
+
+        // Create event for Marker being added to feature group
+        newSavedMarkers.on('layeradd', function(event){
             create_post();
         });
         
         // Add marker to map
-        map.addLayer(layer);
-        layer.on('click', function(event){
+        newSavedMarkers.addLayer(L.geoJson(markerGeoJson));
+        newSavedMarkers.addTo(map);
+
+        // AJAX Marker Post
+        function create_post() {
+            $.ajax({
+                url : document.getElementById('savepoint').action, // the endpoint
+                type : "POST", // http method
+                data : { the_location : $('#pointGeom').val() }, // data sent with the post request
+
+                // handle a successful response
+                success : function(json) {
+                    $('#pointGeom').val(''); // remove the value from the input
+                    var newMarkerId = json.features[0].properties.point_id
+                    updateLayerId(newMarkerId); // add ID to GeoJSON layer
+                },
+            });
+        };
+
+        // function to add the server created ID to GeoJSON layer
+        function updateLayerId(_id) {
+            markerGeoJson.properties.point_id = _id;
+        };
+
+        // Display GeoJSON when clicking on a marker
+        newSavedMarkers.on('click', function (e) {
+            var marker = e.layer;
+            var markerId = marker.toGeoJSON();
+            console.log(markerId);
+        });
+
+        // Open marker modal
+        newSavedMarkers.on('click', function(event){
             openModal();
         });
     });
 }
-
-// AJAX for posting
-function create_post() {
-    $.ajax({
-        url : document.getElementById('savepoint').action, // the endpoint
-        type : "POST", // http method
-        data : { the_location : $('#pointGeom').val() }, // data sent with the post request
-
-        // handle a successful response
-        success : function(json) {
-            $('#pointGeom').val(''); // remove the value from the input
-            console.log(json); // log the returned json to the console
-        },
-    });
-};
 
 // Modal for creating photo post
 function openModal() {

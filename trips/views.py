@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.core import serializers
 
-from trips.models import Trip, TripLocations
-from .forms import LocationDataForm
+from trips.models import Trip, TripLocations, LocationData
+from trips.forms import TripLocationsForm, LocationDataForm
 
 
 
@@ -33,17 +33,14 @@ def add_point(request, trip_id):
     if request.method == 'POST':
         this_trip = Trip.objects.get(id=trip_id)
         point_coordinates = request.POST.get('the_location')
-        response_data = {}
         
         location = TripLocations(geom=point_coordinates, trip=this_trip)
         location.save()
-        
-        response_data['result'] = 'Create trip location successful!'
-        
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
+
+        this_location = TripLocations.objects.filter(id=location.pk)
+        this_location_data = serializers.serialize("geojson", this_location)
+
+        return HttpResponse(this_location_data, content_type="application/json")
 
 def add_point_data(request):
     if request.method == 'POST':

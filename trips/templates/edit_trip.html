@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
 
   <!-- AJAX add point form -->
+
   <form action="{{ trip.id }}add_point/" method="post" id="savepoint">
     <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
   </form>
