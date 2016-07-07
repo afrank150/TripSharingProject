@@ -10,3 +10,41 @@ body {
     width:  100%;
     height: 650px;
 }
+
+#dropzone { 
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+}
+
+.dropzone {
+	border: 2px dashed #0087F7;
+	border-radius: 5px; 
+	background: white;
+	min-height: 150px;
+	padding: 54px 54px;
+}
+
+.dropzone.dz-clickable { 
+	cursor: pointer;
+}
+
+.dropzone.dz-clickable * { 
+	cursor: default;
+}
+
+.dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
+	cursor: pointer;
+}
+
+.dropzone .dz-message { 
+	font-weight: 400;
+	text-align: center;
+	margin: 2em 0;
+}
+
+.dropzone .dz-message .note {
+	font-size: 0.8em;
+	font-weight: 200;
+	display: block;
+	margin-top: 1.4rem; 
+}

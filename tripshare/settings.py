@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # The region to connect to when storing files.
-AWS_REGION = os.environ.get('AWS_REGION')
+"""AWS_REGION = os.environ.get('AWS_REGION')
 
 # The AWS access key used to access the storage buckets.
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
@@ -57,7 +57,10 @@ AWS_S3_BUCKET_AUTH = False
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 DEFAULT_FILE_STORAGE = "django_s3_storage.storage.S3Storage"
-MEDIA_URL = 'https://%s.s3-%s.amazonaws.com/' % (AWS_S3_BUCKET_NAME, AWS_REGION)
+MEDIA_URL = 'https://%s.s3-%s.amazonaws.com/' % (AWS_S3_BUCKET_NAME, AWS_REGION)"""
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL =  '/media/'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')

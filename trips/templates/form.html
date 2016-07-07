@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head></head>
+
+<body>
+	<div>
+		<form action="{{ trip.id }}" method="post" enctype="multipart/form-data">
+			{{ form }}
+			<button type="submit">Submit</button>{% csrf_token %}
+		</form>
+	</div>
+</body>

@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.core import serializers
+from django.template import RequestContext
+from django.core.urlresolvers import reverse
 
 from trips.models import Trip, TripLocations, LocationData
 from trips.forms import TripLocationsForm, LocationDataForm
@@ -44,8 +46,14 @@ def add_point(request, trip_id):
 
 def add_point_data(request):
     if request.method == 'POST':
-        pass
+        form = LocationDataForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Image upload succeeded.')
+    else:
+        form = LocationDataForm()
 
+    return render(request, 'form.html', {'form': form})
 
 def view_trip(request, trip_id):
     this_trip = Trip.objects.get(id=trip_id)

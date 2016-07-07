@@ -22,11 +22,17 @@
         <h4 class="modal-title">Upload Images For This Location</h4>
       </div>
       <div class="modal-body">
-        <form action="{{ trip.id }}locationupload/" class="dropzone" id="my-awesome-dropzone">
-          <input type="file" name="file" />{% csrf_token %}
-        </form>
+        <div id="dropzone">
+          <form action="{{ trip.id }}photo_upload/" method="post" enctype="multipart/form-data" class="dropzone needsclick dz-clickable" id="locationDropzone">{% csrf_token %}
+            <input type="hidden" name="location" id="locationUuId" value="" />
+            <div class="dz-message needsclick" id="uploadInstructions">
+              Drop files or click here to upload
+            </div>
+          </form>
+        </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="submit-all">Submit</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

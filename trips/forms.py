@@ -13,4 +13,5 @@ class TripLocationsForm(ModelForm):
 class LocationDataForm(ModelForm):
 	class Meta:
 		model = LocationData
-		fields = ['photo', 'photo_caption', 'location']
+		fields = ['photo', 'location']
+		exclude = ['photo_caption']
