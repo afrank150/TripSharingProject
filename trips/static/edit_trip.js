@@ -175,6 +175,10 @@ Dropzone.options.locationDropzone = {
             $("#uploadInstructions").text('');
         });
 
+        this.on("processing", function() {
+            locationDropzone.options.autoProcessQueue = true;
+        });
+
         // Remove thubnails after upload completes and disable submit button
         this.on("complete", function(file) {
           locationDropzone.removeFile(file);
