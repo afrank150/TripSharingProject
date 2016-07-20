@@ -3,7 +3,6 @@
 {% block map %}
   <!-- css -->
   {% load staticfiles %}
-  <script type="text/javascript" src="/static/dropzone/dropzone.js"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
 
   <!-- AJAX add point form -->
@@ -47,7 +46,8 @@
   {% leaflet_css plugins="ALL" %}
   <!--<script>var locationList = {{ location_list|safe }}</script>-->
   <script>var tripData = {{ trip_data|safe }}</script>
-  <script type="text/javascript" src="/static/plugins.js"></script>
+  <script type="text/javascript" src="/static/dropzone/dropzone.js"></script>
+  <script type="text/javascript" src="/static/edit_trip_dropzone.js"></script>
   <script type="text/javascript" src="/static/edit_trip.js"></script>
   {% leaflet_map "TripShare" callback="window.map_init_basic" %}
 {% endblock %}

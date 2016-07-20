@@ -10,4 +10,4 @@ urlpatterns = [
     url(r'^edit/(\d+)/add_point/$', views.add_point),
     url(r'^edit/\d+/photo_upload/$', views.add_point_data),
     url(r'^(\d+)/$', views.view_trip),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
