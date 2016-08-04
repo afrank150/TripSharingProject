@@ -70,7 +70,8 @@ function viewPhotos(json) {
 		var options = {
 		    // optionName: 'option value'
 		    // for example:
-		    index: 0 // start at first slide
+		    index: 0, // start at first slide
+		    history: false // removes the GalleryUID from URL
 		};
 
 		// Initializes and opens PhotoSwipe
