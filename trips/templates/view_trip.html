@@ -7,23 +7,12 @@
   <link rel="stylesheet" type="text/css" href="{% static 'photoswipe/dist/default-skin/default-skin.css' %}" /> 
   <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
 
-  <!-- Leaflet -->
-  {% load leaflet_tags %}
-
-  <!-- Leaflet Plugins -->
-  {% leaflet_js plugins="ALL" %}
-  {% leaflet_css plugins="ALL" %}
-
-  <!-- Photoswipe -->
-  <script type="text/javascript" src="/static/photoswipe/dist/photoswipe.min.js"></script> 
-  <script type="text/javascript" src="/static/photoswipe/dist/photoswipe-ui-default.min.js"></script>
-
-  <!-- js -->
-  <!--<script>var locationList = {{ location_list|safe }}</script>-->
-  <script>var tripData = {{ trip_data|safe }}</script>
-  <script type="text/javascript" src="/static/plugins.js"></script>
-  <script type="text/javascript" src="/static/view_trip.js"></script>
-  {% leaflet_map "TripShare" callback="window.map_init_basic" %}
+  <!-- AJAX for GET of photos -->
+  <div>
+    <form action="{{ trip.id }}get_photos/" method="get" id="getPhotos">
+      <input type="hidden" id="pointId" value="" />{% csrf_token %}
+    </form>
+  </div>
 
   <!-- Root element of PhotoSwipe. Must have class pswp.-->
   <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -87,8 +76,22 @@
               </div>
 
           </div>
-
       </div>
-
   </div>
+
+  <!-- Leaflet -->
+  {% load leaflet_tags %}
+
+  <!-- Leaflet Plugins -->
+  {% leaflet_js plugins="ALL" %}
+  {% leaflet_css plugins="ALL" %}
+
+  <!-- Photoswipe -->
+  <script type="text/javascript" src="/static/photoswipe/dist/photoswipe.min.js"></script> 
+  <script type="text/javascript" src="/static/photoswipe/dist/photoswipe-ui-default.min.js"></script>
+
+  <!-- js -->
+  <script>var tripData = {{ trip_data|safe }}</script>
+  <script type="text/javascript" src="/static/view_trip.js"></script>
+  {% leaflet_map "TripShare" callback="window.map_init_basic" %}
 {% endblock %}

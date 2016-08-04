@@ -95,7 +95,7 @@ function map_init_basic (map, options) {
 
         // Create event for Marker being added to feature group
         newSavedMarkers.on('layeradd', function(event){
-            create_post();
+            createPost();
         });
         
         // Add marker to map
@@ -103,7 +103,7 @@ function map_init_basic (map, options) {
         newSavedMarkers.addTo(map);
 
         // AJAX Marker Post
-        function create_post() {
+        function createPost() {
             $.ajax({
                 url : document.getElementById('savepoint').action, // the endpoint
                 type : "POST", // http method
@@ -123,10 +123,6 @@ function map_init_basic (map, options) {
             markerGeoJson.properties.point_id = _id;
         };
 
-        // Open the photo upload modal on marker click
-        newSavedMarkers.on('click', function(event){
-            openModal();
-        });
 
         // Update Form with marker ID that was clicked
         newSavedMarkers.on('click', function (e) {
@@ -135,6 +131,9 @@ function map_init_basic (map, options) {
             var markerId = markerGeoJson.properties.point_id;
             console.log(markerId);
             $('#locationUuId').val(markerId);
+
+            // Open the photo upload modal on marker click
+            openModal();
         });
 
     });

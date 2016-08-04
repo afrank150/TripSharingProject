@@ -15,38 +15,66 @@ function map_init_basic (map) {
         savedMarkers.addTo(map);
         var bounds = savedMarkers.getBounds();
         map.fitBounds(bounds);
-        savedMarkers.on('click', function(event){
-            viewPhotos();
+
+        savedMarkers.on('click', function (e) {
+            var marker = e.layer;
+            var markerGeoJson = marker.toGeoJSON();
+            var markerId = markerGeoJson.properties.point_id;
+            $('#pointId').val(markerId);
+            console.log(markerId);
+
+            getPhotoLocations();
         });
     };
 }
 
+// Get Photos and Initiate Photoswipe
+function getPhotoLocations() {
+	$.ajax({
+        url: document.getElementById('getPhotos').action, // the endpoint,
+        data: { location_id : $('#pointId').val() },
+
+        // handle a successful response
+        success: function(respnonseJson) {
+        	$('#pointId').val('');
+        	console.log(respnonseJson);
+        	viewPhotos(respnonseJson);
+		},
+	});
+};
+
 // phtoswipe function
-function viewPhotos() {
-	var pswpElement = document.querySelectorAll('.pswp')[0];
+function viewPhotos(json) {
+	var photoItems = [];
+	var count = json.length;
+	if (count === 0) {
+		alert("no photos added")
+	}
+	else {
+		for(var i = 0; i < count; i++) {
+		    var obj = json[i];
+		    photoItems.push({
+		    	src: 'https://dev-tripsharephotos.s3-us-west-2.amazonaws.com/'+obj.fields.photo,
+		    	w: obj.fields.image_width,
+		    	h: obj.fields.image_height,
+		    });
+	    };
 
-	// build items array
-	var items = [
-	    {
-	        src: 'https://upload.wikimedia.org/wikipedia/en/7/76/6_bonobos_WHCalvin_IMG_1341.JPG',
-	        w: 876,
-	        h: 700
-	    },
-	    {
-	        src: 'https://upload.wikimedia.org/wikipedia/en/7/76/6_bonobos_WHCalvin_IMG_1341.JPG',
-	        w: 876,
-	        h: 700
-	    }
-	];
+		console.log(photoItems);
+		var pswpElement = document.querySelectorAll('.pswp')[0];
 
-	// define options (if needed)
-	var options = {
-	    // optionName: 'option value'
-	    // for example:
-	    index: 0 // start at first slide
+		// build items array
+		var items = photoItems;
+
+		// define options (if needed)
+		var options = {
+		    // optionName: 'option value'
+		    // for example:
+		    index: 0 // start at first slide
+		};
+
+		// Initializes and opens PhotoSwipe
+		var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+		gallery.init();
 	};
-
-	// Initializes and opens PhotoSwipe
-	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-	gallery.init();
-}
+};

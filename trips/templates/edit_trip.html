@@ -6,38 +6,36 @@
   <link rel="stylesheet" type="text/css" href="{% static 'trip.css' %}" />
 
   <!-- AJAX add point form -->
-
   <form action="{{ trip.id }}add_point/" method="post" id="savepoint">
     <input type="hidden" id="pointGeom" value="" />{% csrf_token %}
   </form>
 
   <div id="pointDataModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal for uploads -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Upload Images For This Location</h4>
-      </div>
-      <div class="modal-body">
-        <div id="dropzone">
-          <form action="{{ trip.id }}photo_upload/" method="post" enctype="multipart/form-data" class="dropzone needsclick dz-clickable" id="locationDropzone">{% csrf_token %}
-            <input type="hidden" name="location" id="locationUuId" value="" />
-            <div class="dz-message needsclick" id="uploadInstructions">
-              Drop files or click here to upload
-            </div>
-          </form>
+      <!-- Modal for uploads -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Upload Images For This Location</h4>
+        </div>
+        <div class="modal-body">
+          <div id="dropzone">
+            <form action="{{ trip.id }}photo_upload/" method="post" enctype="multipart/form-data" class="dropzone needsclick dz-clickable" id="locationDropzone">{% csrf_token %}
+              <input type="hidden" name="location" id="locationUuId" value="" />
+              <div class="dz-message needsclick" id="uploadInstructions">
+                Drop or click to upload
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="submit-all">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="submit-all">Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
     </div>
-
   </div>
-</div>
 
   <!-- Leaflet -->
   {% load leaflet_tags %}

@@ -1,9 +1,9 @@
 ## Views for Trips App
 
 import json
+import uuid
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import HttpResponse, Http404, JsonResponse
 from django.core import serializers
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
@@ -54,6 +54,25 @@ def add_point_data(request):
         form = LocationDataForm()
 
     return render(request, 'form.html', {'form': form})
+
+def get_point_data(request, trip_id):
+    this_trip = Trip.objects.get(id=trip_id)
+    this_trip_locations = TripLocations.objects.filter(trip=this_trip)
+    this_trip_locations_ids = []
+    for trip_location in this_trip_locations:
+        this_trip_locations_ids.append(str(trip_location.point_id))
+
+    if request.method == 'GET':
+        location_id = request.GET['location_id']
+
+        if location_id in this_trip_locations_ids:
+            this_trip_location_data = LocationData.objects.filter(location=location_id)
+            response = serializers.serialize("json", this_trip_location_data)
+
+            return HttpResponse(response, content_type="application/json")
+
+        else:
+            pass # need to return a 404 here   
 
 def view_trip(request, trip_id):
     this_trip = Trip.objects.get(id=trip_id)
