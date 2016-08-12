@@ -93,6 +93,7 @@
 
   <!-- js -->
   <script>var tripData = {{ trip_data|safe }}</script>
+  <script>var basePhotoUrl = '{{ s3_url }}'</script>
   <script type="text/javascript" src="/static/view_trip.js"></script>
   {% leaflet_map "TripShare" callback="window.map_init_basic" %}
 {% endblock %}

@@ -9,12 +9,24 @@ function map_init_basic (map) {
     var count = features.length;
 
     if (count > 0) {
-    
-        // Return saved marker locations and add markers to map
-        savedMarkers.addLayer(L.geoJson(tripData))
+        savedMarkers.addLayer(L.geoJson(tripData));
         savedMarkers.addTo(map);
         var bounds = savedMarkers.getBounds();
         map.fitBounds(bounds);
+
+        savedMarkers.on('mouseover', function (e) {
+        	var locationPopup = '<b>Click trip location<br>to see photos</b>';
+        	var popupOptions = {
+        		closeButton: false,
+        	};
+            var marker = e.layer;
+            marker.bindPopup(locationPopup, popupOptions).openPopup();
+        });
+
+        savedMarkers.on('mouseout', function (e) {
+            var marker = e.layer;
+            marker.closePopup().unbindPopup();
+        });
 
         savedMarkers.on('click', function (e) {
             var marker = e.layer;
@@ -22,7 +34,6 @@ function map_init_basic (map) {
             var markerId = markerGeoJson.properties.point_id;
             $('#pointId').val(markerId);
             console.log(markerId);
-
             getPhotoLocations();
         });
     };
@@ -48,13 +59,13 @@ function viewPhotos(json) {
 	var photoItems = [];
 	var count = json.length;
 	if (count === 0) {
-		alert("no photos added")
+		alert("No photos added to this location")
 	}
 	else {
 		for(var i = 0; i < count; i++) {
 		    var obj = json[i];
 		    photoItems.push({
-		    	src: 'https://dev-tripsharephotos.s3-us-west-2.amazonaws.com/'+obj.fields.photo,
+		    	src: basePhotoUrl+obj.fields.photo,
 		    	w: obj.fields.image_width,
 		    	h: obj.fields.image_height,
 		    });

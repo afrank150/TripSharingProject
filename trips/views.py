@@ -7,6 +7,7 @@ from django.http import HttpResponse, Http404, JsonResponse
 from django.core import serializers
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 from trips.models import Trip, TripLocations, LocationData
 from trips.forms import TripLocationsForm, LocationDataForm
@@ -55,6 +56,17 @@ def add_point_data(request):
 
     return render(request, 'form.html', {'form': form})
 
+def view_trip(request, trip_id):
+    this_trip = Trip.objects.get(id=trip_id)
+    this_trip_name = this_trip.trip_name
+    this_trip_locations = TripLocations.objects.filter(trip=this_trip)
+    this_trip_data = serializers.serialize("geojson", this_trip_locations)
+    s3_url = settings.S3_URL
+
+    return render(request, 'view_trip.html', {'trip_name': this_trip_name, 
+        'trip_data': this_trip_data, 's3_url': s3_url}
+    )
+
 def get_point_data(request, trip_id):
     this_trip = Trip.objects.get(id=trip_id)
     this_trip_locations = TripLocations.objects.filter(trip=this_trip)
@@ -73,13 +85,3 @@ def get_point_data(request, trip_id):
 
         else:
             pass # need to return a 404 here   
-
-def view_trip(request, trip_id):
-    this_trip = Trip.objects.get(id=trip_id)
-    this_trip_name = this_trip.trip_name
-    this_trip_locations = TripLocations.objects.filter(trip=this_trip)
-    this_trip_data = serializers.serialize("geojson", this_trip_locations)
-
-    return render(request, 'view_trip.html', {'trip_name': this_trip_name, 
-        'trip_data': this_trip_data}
-    )
