@@ -45,6 +45,7 @@ Dropzone.options.locationDropzone = {
             // add back the upload instrcutions text after all files are removed
             $("#uploadInstructions").text('Drop files or click here to upload');
             $("#submit-all").prop('disabled', true);
+            locationDropzone.options.autoProcessQueue = false;
         });
     }
 };
