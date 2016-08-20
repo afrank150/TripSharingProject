@@ -4,16 +4,108 @@
 	<!-- css -->
 	{% load staticfiles %}
   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'home.css' %}" />
-  <!-- <script>var latestTripDict = {{ latest_trip_dict|safe }}</script> -->
-  <!--  <script type="text/javascript" src="/static/home.js"></script> -->
+  <script src="https://use.fontawesome.com/8f676572f3.js"></script>
 
-	<div class="jumbotron main-banner">
-		<div class="container text-center" style="display: table-cell; vertical-align: middle">
-			<h1>Share Your Adventure</h1>
-		</div>
-	</div>
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Share Your Adventure</h1>
+                        <p class="intro-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <div class="container-fluid text-center"><br>
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Trip Sharing, for those who<br> love to explore</h2>
+                    <p class="lead">Browse through all the experiences, plan your trip, and share it with friends.</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Get Started!</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                            	<a href="/">
+	                                <span class="fa-stack fa-4x">
+		                                <i class="fa fa-circle fa-stack-2x"></i>
+		                                <i class="fa fa-map-marker fa-stack-1x text-primary"></i>
+	                            	</span>
+	                                <h4>
+	                                    <strong>Create A Trip</strong>
+	                                </h4>
+	                            </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                            	<a href="/">
+		                            <span class="fa-stack fa-4x">
+		                                <i class="fa fa-circle fa-stack-2x"></i>
+		                                <i class="fa fa-map fa-stack-1x text-primary"></i>
+		                            </span>
+	                                <h4>
+	                                    <strong>Browse Trips</strong>
+	                                </h4>
+		                        </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                            	<a href="/">
+	                                <span class="fa-stack fa-4x">
+	                                	<i class="fa fa-circle fa-stack-2x"></i>
+	                                	<i class="fa fa-camera fa-stack-1x text-primary"></i>
+	                            	</span>
+	                                <h4>
+	                                    <strong>Photo Galleries</strong>
+	                                </h4>
+	                            </a>  
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                            	<a href="/">
+	                                <span class="fa-stack fa-4x">
+	                                	<i class="fa fa-circle fa-stack-2x"></i>
+	                                	<i class="fa fa-globe fa-stack-1x text-primary"></i>
+	                            	</span>
+	                                <h4>
+	                                    <strong>Top Locations</strong>
+	                                </h4>
+	                            </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+  	<div class="container-fluid text-center"><br>
 
 	  <div class="row">
 	  	<div class="col-sm-6">
@@ -48,5 +140,53 @@
 	  	    </form>
 	  	</div>
 	  </div>
-  </div><br>
+  	</div>
+
+  	<footer class="container-fluid text-center">
+      <div
+        class="fb-like"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true">
+          <p>&copy; 2016</p>
+      </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

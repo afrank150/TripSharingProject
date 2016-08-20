@@ -1,40 +1,122 @@
-html,
 body {
+  width: 100%;
+  height: 100%;
+  font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  background-color: #333333;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 35px;
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn {
+  text-transform: capitalize;
+  font-weight: 200;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+p {
+  margin: 0 0 25px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  p {
+    margin: 0 0 35px;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+}
+a {
+  color: #ffffff;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #9a9a9a;
+}
+.intro {
+  display: table;
+  width: 100%;
+  height: auto;
+  padding: 100px 0;
+  text-align: center;
+  color: white;
+  background: url("images/carousel_2.jpg") no-repeat bottom center scroll;
+  background-color: #333333;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.intro .intro-body {
+  display: table-cell;
+  vertical-align: middle;
+}
+.intro .intro-body .brand-heading {
+  font-size: 40px;
+}
+.intro .intro-body .intro-text {
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .intro {
     height: 100%;
-    width: 100%;
-    background-color: #333333;
-    padding-top: 25px;
+    padding: 0;
+  }
+  .intro .intro-body .brand-heading {
+    font-size: 100px;
+  }
+  .intro .intro-body .intro-text {
+    font-size: 26px;
+  }
 }
 
-@media screen and (min-width: 900px) {
-	.main-banner {
-	    height: 500px;
-	    width: 100%;
-	    background: url("images/carousel_1.jpg") no-repeat;
-	    -webkit-background-size: contain;
-	  	-moz-background-size: contain;
-	  	-o-background-size: contain;
-	  	background-size: contain;
-	    display: table;
-	}
+/* About */
+
+.about {
+    padding: 50px 0;
 }
 
-@media screen and (min-width: 900px) {
-	.container.text-center {
-		color: #ffffff;
-	}
+/* Services */
+
+.services {
+    padding: 50px 0;
+}
+.fa-stack {
+	margin-bottom: 10px;
 }
 
-.row {
-	color: #ffffff;
+.service-item {
+    margin-bottom: 30px;
 }
 
 /*
 Page Layout
 */
+.row {
+	color: #ffffff;
+}
 
 .col-sm-5,
 .col-sm-6 {
+	font-family: 'Montserrat', sans-serif;
 }
 
 footer {
