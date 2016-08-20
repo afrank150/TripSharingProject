@@ -22,9 +22,11 @@ h6 {
   letter-spacing: 1px;
 }
 
-.btn {
+.btn,
+.control-label {
   text-transform: capitalize;
   font-weight: 200;
+  font-size: 16px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 

@@ -128,19 +128,20 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <h2>Create a Trip</h2>
-                          	<div class="container-fluid text-center"><br>
-							  <div class="row">
-							  	<div class="col-sm-5 offset1">
-							  	    <form role="form" method="POST" action="/trips/new/" name="Create Trip">
-							  	    	<div class="form-group">
-								    	  <label>New Trip Name:</label>
-								      	  <input type="text" name="trip_name_text">
-								      	</div>
-								      	<button type="submit" class="btn btn-default">Submit</button>{% csrf_token %}
-							  	    </form>
-							  	</div>
-							  </div>
-							</div>
+					  	    <form class="form-horizontal" role="form" method="POST" action="/trips/new/" name="Create Trip">
+							    <div class="form-group">
+							        <label for="tripName" class="control-label col-xs-2">Trip Name:</label>
+							        <div class="col-xs-10">
+							            <input type="text" class="form-control" id="tripName" name="trip_name_text" placeholder="Your Trip Name...">
+							        </div>
+							    </div>
+							    <div class="form-group">
+							        <div class="col-xs-offset-2 col-xs-10">
+							        	<p>Click Continue to begin creating your trip</p>
+							            <button type="Submit" class="btn btn-primary">Continue</button>{% csrf_token %}
+							        </div>
+							    </div>
+							</form>
                         </div>
                     </div>
                 </div>
