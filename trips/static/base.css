@@ -3,7 +3,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #181A40;
+  background-color: #2C3E50;
   border-color: #000000;
 }
 .navbar-custom .navbar-toggle {
@@ -60,7 +60,7 @@
   }
   .navbar-custom.top-nav-collapse {
     padding: 0;
-    background: #333333;
+    background: #2C3E50;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
 }

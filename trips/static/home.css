@@ -47,10 +47,15 @@ a {
   transition: all 0.2s ease-in-out;
 }
 a:hover,
-a:focus {
+a:focus,
+a:active,
+a.active {
   text-decoration: none;
   color: #9a9a9a;
+  outline: none;
 }
+
+
 .intro {
   display: table;
   width: 100%;
@@ -92,6 +97,85 @@ a:focus {
 
 .about {
     padding: 50px 0;
+}
+
+/*
+Modal
+*/
+.portfolio-modal .modal-content {
+  border-radius: 0;
+  background-clip: border-box;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  background-color: #333333;
+  min-height: 100%;
+  padding: 100px 0;
+  text-align: center;
+}
+
+portfolio-modal .modal-content h2 {
+  margin: 0;
+  font-size: 3em;
+}
+.portfolio-modal .modal-content img {
+  margin-bottom: 30px;
+}
+.portfolio-modal .modal-content .item-details {
+  margin: 30px 0;
+}
+.portfolio-modal .close-modal {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+.portfolio-modal .close-modal:hover {
+  opacity: 0.3;
+}
+.portfolio-modal .close-modal .lr {
+  height: 45px;
+  width: 1px;
+  margin-left: 35px;
+  background-color: #ffffff;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Safari and Chrome */
+  z-index: 1051;
+}
+.portfolio-modal .close-modal .lr .rl {
+  height: 45px;
+  width: 1px;
+  background-color: #ffffff;
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Safari and Chrome */
+  z-index: 1052;
+}
+@media (min-width: 768px) {
+	.portfolio-modal .close-modal {
+	  width: 75px;
+	  height: 75px;
+	}
+	.portfolio-modal .close-modal .lr {
+	  height: 75px;
+	}
+	.portfolio-modal .close-modal .lr .rl {
+	  height: 75px;
+	}
+}
+
+
+.portfolio-modal .modal-backdrop {
+  opacity: 0;
+  display: none;
 }
 
 /* Services */

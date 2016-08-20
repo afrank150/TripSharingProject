@@ -20,6 +20,15 @@ h6 {
   letter-spacing: 1px;
 }
 
+a:hover,
+a:focus,
+a:active,
+a.active {
+  text-decoration: none;
+  color: #9a9a9a;
+  outline: none;
+}
+
 .modal-title {
   text-transform: capitalize;
   font-weight: 400;
@@ -74,3 +83,4 @@ h6 {
 	display: block;
 	margin-top: 1.4rem; 
 }
+
