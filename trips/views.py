@@ -15,7 +15,7 @@ from trips.forms import TripLocationsForm, LocationDataForm
 
 
 def home_page(request):
-    latest_trip_list = Trip.objects.order_by('-id')[:10]
+    latest_trip_list = Trip.objects.order_by('-id')[:15]
     return render(request, 'home.html', {'latest_trip_list': latest_trip_list})
     
 def new_trip(request):

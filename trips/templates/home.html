@@ -161,30 +161,24 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <h2>Browse Trips</h2>
-                            <div class="container-fluid text-center"><br>
-							  <div class="row">
-							  	<div class="col-sm-6">
-							  		<table id="recentTripPosts" class="table">
-										<thead>
-											<tr>
-												<th class="text-center">Recent Trip Posts</th>
-											</tr>
-										</thead>
-										<tbody>
-											{% for row in latest_trip_list %}
-											<tr>
-												<td>
-													<nav>
-														<a href="trips/{{ row.id }}" id="linkToTrip">{{ row.trip_name }}</a>
-													</nav>
-												</td>
-											</tr>
-											{% endfor %}
-										</tbody>
-							  		</table>
-							  	</div>
-							  </div>
-						  	</div>
+					  		<table id="recentTripPosts" class="table">
+								<thead>
+									<tr>
+										<th class="text-center">Recent Trip Posts</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for row in latest_trip_list %}
+									<tr>
+										<td>
+											<nav>
+												<a href="trips/{{ row.id }}" id="linkToTrip">{{ row.trip_name }}</a>
+											</nav>
+										</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+					  		</table>
                         </div>
                     </div>
                 </div>

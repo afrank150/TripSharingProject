@@ -23,7 +23,8 @@ h6 {
 }
 
 .btn,
-.control-label {
+.control-label,
+th {
   text-transform: capitalize;
   font-weight: 200;
   font-size: 16px;
