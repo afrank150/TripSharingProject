@@ -49,12 +49,17 @@ a {
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-a:hover,
+a:hover {
+  text-decoration: none;
+  color: #9a9a9a;
+  outline: none;
+}
+
 a:focus,
 a:active,
 a.active {
   text-decoration: none;
-  color: #9a9a9a;
+  color: #ffffff;
   outline: none;
 }
 
