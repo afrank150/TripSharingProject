@@ -1,11 +1,12 @@
 // Leaflet Map
 function map_init_basic (map) {
 
-    $(window).on("resize", function() {
-        $("#map").height($(window).height()).width($(window).width());
-        map.invalidateSize();
-    }).trigger("resize");
-     
+    $(".leaflet-container").height($(window).height()-75);
+
+    map.on('resize', function () {
+        $(".leaflet-container").height($(window).height()-75);
+    });
+
     // Initialise the FeatureGroup to store editable layers (no edit funcrionality yet)
     var savedMarkers = new L.featureGroup();
 

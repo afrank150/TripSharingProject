@@ -1,7 +1,5 @@
 html,
-body,
-#map
- {
+body {
     height: 100%;
     width: 100%;
     font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -20,6 +18,11 @@ h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+.leaflet-container {  /* all maps */
+    padding-top: 25px;
+    width: 100%;
 }
 
 a:hover,

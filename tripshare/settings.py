@@ -64,6 +64,7 @@ LEAFLET_CONFIG = {
     'DEFAULT_ZOOM': 3,
     'MIN_ZOOM': 2,
     'MAX_ZOOM': 18,
+    'RESET_VIEW': False,
     'TILES': [('Streets', 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=%s' % os.environ.get('MAPBOX_API_TOKEN'), {
         'attribution': 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', 
         'id': os.environ.get('MAPBOX_ID'), 
