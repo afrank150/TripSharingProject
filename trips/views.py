@@ -45,12 +45,15 @@ def add_point(request, trip_id):
 
         return HttpResponse(this_location_data, content_type="application/json")
 
-def add_point_data(request):
+def add_point_data(request, trip_id):
     if request.method == 'POST':
+        this_trip = Trip.objects.get(id=trip_id)
         form = LocationDataForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Image upload succeeded.')
+        trip_data = form.save(commit=False)
+        trip_data.trip = this_trip
+        # if trip_data.is_valid():
+        trip_data.save()
+        return HttpResponse('Image upload succeeded.')
     else:
         form = LocationDataForm()
 

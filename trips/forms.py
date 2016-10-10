@@ -14,4 +14,4 @@ class LocationDataForm(ModelForm):
 	class Meta:
 		model = LocationData
 		fields = ['photo', 'location']
-		exclude = ['photo_caption']
+		exclude = ['photo_caption', 'trip']
