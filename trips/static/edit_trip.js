@@ -40,7 +40,6 @@ function map_init_basic (map, options) {
     if (count > 0) {
     
         // Return saved marker locations and add markers to map
-        console.log(L.geoJson(tripData));
         savedMarkers.addLayer(L.geoJson(tripData));
         savedMarkers.addTo(map);
         var bounds = savedMarkers.getBounds();
@@ -57,7 +56,6 @@ function map_init_basic (map, options) {
             var markerGeoJson = marker.toGeoJSON();
             var markerId = markerGeoJson.properties.point_id;
             $('#locationUuId').val(markerId);
-            console.log(markerId);
         });
     };
 
@@ -129,7 +127,6 @@ function map_init_basic (map, options) {
             var marker = e.layer;
             var markerGeoJson = marker.toGeoJSON();
             var markerId = markerGeoJson.properties.point_id;
-            console.log(markerId);
             $('#locationUuId').val(markerId);
 
             // Open the photo upload modal on marker click

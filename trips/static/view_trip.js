@@ -1,12 +1,6 @@
 // Leaflet Map
 function map_init_basic (map) {
 
-    $(".leaflet-container").height($(window).height()-75);
-
-    map.on('resize', function () {
-        $(".leaflet-container").height($(window).height()-75);
-    });
-
     // Initialise the FeatureGroup to store editable layers (no edit funcrionality yet)
     var savedMarkers = new L.featureGroup();
 
@@ -39,7 +33,6 @@ function map_init_basic (map) {
             var markerGeoJson = marker.toGeoJSON();
             var markerId = markerGeoJson.properties.point_id;
             $('#pointId').val(markerId);
-            console.log(markerId);
             getPhotoLocations();
         });
     };
@@ -54,7 +47,6 @@ function getPhotoLocations() {
         // handle a successful response
         success: function(respnonseJson) {
         	$('#pointId').val('');
-        	console.log(respnonseJson);
         	viewPhotos(respnonseJson);
 		},
 	});
@@ -77,7 +69,6 @@ function viewPhotos(json) {
 		    });
 	    };
 
-		console.log(photoItems);
 		var pswpElement = document.querySelectorAll('.pswp')[0];
 
 		// build items array

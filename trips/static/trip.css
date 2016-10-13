@@ -1,10 +1,23 @@
+body, 
+html {
+  background-color: #333333;
+  padding-top: 25px;
+  height: 100%;
+  width: 100%;
+}
+
 html,
-body {
-    height: 100%;
-    width: 100%;
-    font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #333333;
-    padding-top: 25px;
+body,
+#TripShare {
+  font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#TripShare {
+  position: absolute;
+  top: 50px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
 }
 
 h1,
@@ -18,11 +31,6 @@ h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
-}
-
-.leaflet-container {  /* all maps */
-    padding-top: 25px;
-    width: 100%;
 }
 
 a:hover,
