@@ -1,7 +1,7 @@
 // Handling the CSRF Token
 function getCookie(name) {
     var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
+    if (document.cookie && document.cookie !== '') {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
             var cookie = jQuery.trim(cookies[i]);
@@ -38,7 +38,7 @@ function map_init_basic (map, options) {
     var count = features.length;
 
     if (count > 0) {
-    
+
         // Return saved marker locations and add markers to map
         savedMarkers.addLayer(L.geoJson(tripData));
         savedMarkers.addTo(map);
@@ -57,11 +57,11 @@ function map_init_basic (map, options) {
             var markerId = markerGeoJson.properties.point_id;
             $('#locationUuId').val(markerId);
         });
-    };
+    }
 
 
     // draw options config
-    var options = {
+    options = {
         position: 'topleft',
         draw: {
             polygon: false,
@@ -84,7 +84,7 @@ function map_init_basic (map, options) {
             var lat = layer.getLatLng().lat;
             var lng = layer.getLatLng().lng;
             pointCords = '{"type": "Point", "coordinates": ['+lng+', '+lat+']}';
-            document.getElementById('pointGeom').value = pointCords;        
+            document.getElementById('pointGeom').value = pointCords;
         }
 
         // Create feature group and GeoJSON Representation for new layers
@@ -95,7 +95,7 @@ function map_init_basic (map, options) {
         newSavedMarkers.on('layeradd', function(event){
             createPost();
         });
-        
+
         // Add marker to map
         newSavedMarkers.addLayer(L.geoJson(markerGeoJson));
         newSavedMarkers.addTo(map);
@@ -110,16 +110,16 @@ function map_init_basic (map, options) {
                 // handle a successful response
                 success : function(json) {
                     $('#pointGeom').val(''); // remove the value from the input
-                    var newMarkerId = json.features[0].properties.point_id
+                    var newMarkerId = json.features[0].properties.point_id;
                     updateLayerId(newMarkerId); // add ID to GeoJSON layer
                 },
             });
-        };
+        }
 
         // function to add the server created ID to GeoJSON layer
         function updateLayerId(_id) {
             markerGeoJson.properties.point_id = _id;
-        };
+        }
 
 
         // Update Form with marker ID that was clicked
@@ -138,6 +138,6 @@ function map_init_basic (map, options) {
 
 // Modal for creating photo post
 function openModal() {
-    $('#pointDataModal').modal('show')
-    $("#submit-all").prop('disabled', true)
-};
+    $('#pointDataModal').modal('show');
+    $("#submit-all").prop('disabled', true);
+}

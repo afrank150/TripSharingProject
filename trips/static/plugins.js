@@ -7,8 +7,8 @@
                 for(var i = 0; i < count; i++) {
                     _location = this[i];
                     _featureGroup.addLayer(L.geoJson(_location));
-                };
-            };
+                }
+            }
         }
     });
 })(jQuery);
@@ -21,7 +21,7 @@
             if (count > 0) {
                 var bounds = this.getBounds();
                 map.fitBounds(bounds);
-            };
+            }
         }
     });
 })(jQuery);

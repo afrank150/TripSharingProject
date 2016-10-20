@@ -10,7 +10,7 @@ Dropzone.options.locationDropzone = {
     thumbnailHeight : 80,
 
     init : function() {
-        var submitButton = document.querySelector("#submit-all")
+        var submitButton = document.querySelector("#submit-all");
         locationDropzone = this;
         submitButton.addEventListener("click", function() {
             // Tell Dropzone to process all queued files.
@@ -19,8 +19,8 @@ Dropzone.options.locationDropzone = {
 
         this.on("addedfile", function() {
             // Remove large marks
-            $(".dz-success-mark").remove()
-            $(".dz-error-mark").remove()
+            $(".dz-success-mark").remove();
+            $(".dz-error-mark").remove();
             // Enable submit button when file is uploaded
             $("#submit-all").prop('disabled', false);
             // Remove upload instructions text
@@ -38,7 +38,7 @@ Dropzone.options.locationDropzone = {
         });
 
         this.on("success", function(file, responseText) {
-            
+
         });
 
         this.on("reset", function() {
